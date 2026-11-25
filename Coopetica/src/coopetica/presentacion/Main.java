@@ -4,21 +4,37 @@
  */
 package coopetica.presentacion;
 
+import coopetica.logica.GestionSucursales;
+import javax.swing.SwingUtilities;
+
 /**
+ * Clase principal del sistema CoopeTica R.L.
  *
- * @author psola
+ * @author Pablo Solano
  */
 public class Main {
 
     /**
-     * @param args the command line arguments
+     * Inicia la aplicacion.
+     *
+     * @param args Argumentos de ejecucion.
      */
     public static void main(String[] args) {
-        System.out.println("Bienvenidos al sistema CoopeTica R.L.");
-        
-        
-        
-        
+
+        SwingUtilities.invokeLater(() -> {
+
+            GestionSucursales gestion = new GestionSucursales();
+
+            VentanaSucursales ventana = new VentanaSucursales(gestion);
+
+            ventana.setVisible(true);
+        });
     }
-    
 }
+            
+       
+        
+    
+
+     
+
