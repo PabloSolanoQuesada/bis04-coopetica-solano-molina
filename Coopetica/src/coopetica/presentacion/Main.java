@@ -5,12 +5,11 @@
 package coopetica.presentacion;
 
 import coopetica.logica.GestionSucursales;
+import coopetica.logica.GestionAsociados;
 import javax.swing.SwingUtilities;
 
 /**
  * Clase principal del sistema CoopeTica R.L.
- *
- * @author Pablo Solano
  */
 public class Main {
 
@@ -23,14 +22,26 @@ public class Main {
 
         SwingUtilities.invokeLater(() -> {
 
-            GestionSucursales gestion = new GestionSucursales();
+            GestionSucursales gestionSucursales =
+                    new GestionSucursales();
 
-            VentanaSucursales ventana = new VentanaSucursales(gestion);
+            GestionAsociados gestionAsociados =
+                    new GestionAsociados();
 
-            ventana.setVisible(true);
+            VentanaSucursales ventanaSucursales =
+                    new VentanaSucursales(gestionSucursales);
+
+            VentanaAsociados ventanaAsociados =
+                    new VentanaAsociados(
+                            gestionAsociados,
+                            gestionSucursales);
+
+            ventanaSucursales.setVisible(true);
+            ventanaAsociados.setVisible(true);
         });
     }
 }
+
             
        
         
