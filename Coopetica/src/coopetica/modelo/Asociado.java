@@ -4,6 +4,8 @@
  */
 package coopetica.modelo;
 
+import java.util.ArrayList;
+
 /**
  * Representar un asociado de CoopeTica R.L.
  * @author psola
@@ -14,6 +16,7 @@ public class Asociado {
     private String nombre;
     private final String numeroAsociado;
     private Sucursal sucursal;
+    private final ArrayList<Cuenta> cuentas;
     
 /**
  * Crear un asociado
@@ -40,6 +43,7 @@ public class Asociado {
         this.nombre = nombre.trim();
         this.numeroAsociado = numeroAsociado.trim();
         this.sucursal = sucursal;
+        this.cuentas = new ArrayList<>();
     }
     
     /**
@@ -95,6 +99,26 @@ public class Asociado {
             throw new IllegalArgumentException("Debe seleccionar una sucursal");
         }
         this.sucursal = sucursal;
+    }
+
+    /**
+     * Agrega una cuenta a la lista de cuentas del asociado.
+     *
+     * @param cuenta Cuenta a vincular.
+     */
+    public void agregarCuenta(Cuenta cuenta) {
+        if (cuenta != null && !cuentas.contains(cuenta)) {
+            cuentas.add(cuenta);
+        }
+    }
+
+    /**
+     * Obtiene las cuentas asociadas a este miembro.
+     *
+     * @return Copia de la lista de cuentas.
+     */
+    public ArrayList<Cuenta> getCuentas() {
+        return new ArrayList<>(cuentas);
     }
     
     /**
