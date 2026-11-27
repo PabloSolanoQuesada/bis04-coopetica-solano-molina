@@ -6,6 +6,7 @@ package coopetica.presentacion;
 
 import coopetica.logica.GestionSucursales;
 import coopetica.logica.GestionAsociados;
+import coopetica.logica.GestionAportes;
 import javax.swing.SwingUtilities;
 
 /**
@@ -14,7 +15,7 @@ import javax.swing.SwingUtilities;
 public class Main {
 
     /**
-     * Inicia la aplicacion.
+     * Inicia la aplicación
      *
      * @param args Argumentos de ejecucion.
      */
@@ -27,6 +28,9 @@ public class Main {
 
             GestionAsociados gestionAsociados =
                     new GestionAsociados();
+            
+            GestionAportes gestionAportes =
+                    new GestionAportes();
 
             VentanaSucursales ventanaSucursales =
                     new VentanaSucursales(gestionSucursales);
@@ -35,9 +39,15 @@ public class Main {
                     new VentanaAsociados(
                             gestionAsociados,
                             gestionSucursales);
+            
+            VentanaAportes ventanaAportes =
+                    new VentanaAportes(
+                        gestionAportes,
+                        gestionAsociados);
 
             ventanaSucursales.setVisible(true);
             ventanaAsociados.setVisible(true);
+            ventanaAportes.setVisible(true);
         });
     }
 }
